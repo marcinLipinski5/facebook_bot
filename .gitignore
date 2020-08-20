@@ -1,4 +1,4 @@
 .idea/
 __pycache__/
 /venv
-fb_api.py
+.env
