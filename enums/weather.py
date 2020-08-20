@@ -1,9 +1,8 @@
-from abc import ABC
-
-from enums.help import Help
-from enums.enum_interface import EnumInterface
-from typing import List
 import enum
+from typing import List
+
+from enums.enum_interface import EnumInterface
+from enums.help import Help
 
 
 class Weather(enum.Enum):
