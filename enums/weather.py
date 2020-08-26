@@ -27,6 +27,9 @@ class WeatherUtils(EnumInterface):
     def additional_parameters() -> List:
         return ['aaa', 'bbb']
 
+    @staticmethod
+    def get_value(name):
+        return Weather[name].value
 
 if __name__ == "__main__":
     print(WeatherUtils.info())

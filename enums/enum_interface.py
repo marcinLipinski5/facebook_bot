@@ -13,3 +13,8 @@ class EnumInterface(metaclass=abc.ABCMeta):
     @abc.abstractmethod
     def additional_parameters() -> List:
         pass
+
+    @staticmethod
+    @abc.abstractmethod
+    def get_value(name):
+        pass

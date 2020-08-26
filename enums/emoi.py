@@ -21,6 +21,10 @@ class EmoiUtils(EnumInterface):
     def additional_parameters() -> List:
         return ['ccc', 'ddd']
 
+    @staticmethod
+    def get_value(name):
+        return Emoi[name].value
+
 
 if __name__ == "__main__":
     print(EmoiUtils.info())
