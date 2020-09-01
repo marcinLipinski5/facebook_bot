@@ -7,8 +7,8 @@ from enums.help import Help
 
 class Emoi(enum.Enum):
 
-    hear = 0
-    smile = 1
+    heart = 'jeszcze nie bangla'
+    smile = 'to tyz nie bangla'
 
 
 class EmoiUtils(EnumInterface):
