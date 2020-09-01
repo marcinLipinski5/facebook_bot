@@ -4,6 +4,7 @@ from typing import List
 from enums.enum_interface import EnumInterface
 from enums.help import Help
 from weather.comparator import Comparator
+from weather.formatter import Formatter
 
 
 class Weather(enum.Enum):
@@ -31,15 +32,8 @@ class WeatherUtils(EnumInterface):
 
     @staticmethod
     def get_value(enum_name):
-        compare_weather = Comparator()
-        compare_weather.compare_all_days()
-        forecast_list = compare_weather.get_compare_result()
         if enum_name == 'week':
-            print(forecast_list)
-            return forecast_list
-        for day, daily_forecast in enumerate(forecast_list):
-            if daily_forecast['day'].lower() == enum_name:
-                return daily_forecast
+            return Formatter().get_all_days_messages()
+        else:
+            return Formatter().get_single_day_message(enum_name)
 
-if __name__ == "__main__":
-    print(WeatherUtils.info())

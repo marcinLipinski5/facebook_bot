@@ -8,7 +8,7 @@ class Comparator:
         # TODO optimize this
         self.__weather_forecast_list = ApiCalls().get_weather_forecast_list()
         self.__person_requirements = {"Kasia":
-                                          {'temp_min': 25,
+                                          {'temp_min': 5,
                                            'temp_max': 1000000,
                                            'main_weather': ['Clear']},
                                       "Marcin":
@@ -18,6 +18,7 @@ class Comparator:
                                       }
         self.__positive_result = True
         self.__compare_answer = ''
+        self.compare_all_days()
 
     def compare_temp_min(self, day_forecast: Dict):
         if self.__person_requirements['Kasia']['temp_min'] >= day_forecast['temp_min']:
@@ -50,14 +51,11 @@ class Comparator:
             self.compare_temp_max(daily_forecast)
             self.compare_temp_min(daily_forecast)
             self.compare_weather_status(daily_forecast)
-            self.__weather_forecast_list[day]['status'] = str(self.__positive_result)
+            self.__weather_forecast_list[day]['status'] = self.__positive_result
             self.__weather_forecast_list[day]['conclusion'] = self.__compare_answer
             self.__positive_result = True
             self.__compare_answer = ''
-        print(self.__weather_forecast_list)
 
     def get_compare_result(self):
         return self.__weather_forecast_list
 
-if __name__ == "__main__":
-    Comparator().compare_all_days()

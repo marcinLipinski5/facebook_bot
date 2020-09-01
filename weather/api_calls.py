@@ -22,9 +22,9 @@ class ApiCalls:
         for day in answer.json()['daily']:
             time_stamp = datetime.datetime.utcfromtimestamp(day['dt'])
             forecast_dict = {'time_stamp': time_stamp.strftime('%d:%m:%Y'),
-                             'day': self.__get_day_name(time_stamp),
-                             'temp_min': day['temp']['min'],
-                             'temp_max': day['temp']['max'],
+                             'day': self.__get_day_name(time_stamp).lower(),
+                             'temp_min': int(day['temp']['min']),
+                             'temp_max': int(day['temp']['max']),
                              'main_weather': day['weather'][0]['main'],
                              'described_weather': day['weather'][0]['description']}
             self.__weather_forecast_week_list.append(forecast_dict)
@@ -38,10 +38,3 @@ class ApiCalls:
 
     def get_weather_forecast_list(self) -> List[Dict]:
         return self.__weather_forecast_week_list
-
-
-
-if __name__ == "__main__":
-    dupa =ApiCalls().get_weather_forecast_list()
-    for kupa in dupa:
-        print(kupa)
