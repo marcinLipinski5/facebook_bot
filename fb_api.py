@@ -7,9 +7,7 @@ from enums.aggregation import Aggregation
 from messages.translate import Translate
 
 app = Flask(__name__)
-ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
-VERIFY_TOKEN = os.getenv('VERIFY_TOKEN')
-bot = Bot(ACCESS_TOKEN)
+bot = Bot(os.getenv('ACCESS_TOKEN'))
 
 
 # TODO rebuild that mess
@@ -40,7 +38,7 @@ def receive_message():
 
 
 def verify_fb_token(token_sent):
-    if token_sent == VERIFY_TOKEN:
+    if token_sent == os.getenv('VERIFY_TOKEN'):
         return request.args.get("hub.challenge")
     return 'Invalid verification token'
 
